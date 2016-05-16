@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="311" id="KGk-i7-Jjw" customClass="NewsCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="312"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="311"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Shb-JW-mbj">
+                        <rect key="frame" x="8" y="10" width="47" height="47"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="47" id="44B-Yr-h6s"/>
+                            <constraint firstAttribute="height" constant="47" id="H8m-Fg-gjo"/>
+                        </constraints>
+                        <connections>
+                            <action selector="viewGameInfo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="chB-vR-piY"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXZ-hA-3AA">
+                        <rect key="frame" x="63" y="10" width="247" height="47"/>
+                        <state key="normal" title="Button"/>
+                        <connections>
+                            <action selector="viewGameInfo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ao1-2j-ZGl"/>
+                        </connections>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jvt-GI-TNu">
+                        <rect key="frame" x="8" y="175" width="240" height="130"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="130" id="4fe-U8-lSX"/>
+                            <constraint firstAttribute="width" constant="240" id="YNd-Oz-nFb"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TeX-lr-MTW">
+                        <rect key="frame" x="8" y="65" width="302" height="102"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="102" id="y0b-Hu-aUN"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.73230991239999998" green="0.75026597750000001" blue="0.80413417259999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="iXZ-hA-3AA" firstAttribute="top" secondItem="Shb-JW-mbj" secondAttribute="top" id="5m6-3V-eJt"/>
+                    <constraint firstItem="iXZ-hA-3AA" firstAttribute="height" secondItem="Shb-JW-mbj" secondAttribute="height" id="DEf-ad-cJr"/>
+                    <constraint firstItem="jvt-GI-TNu" firstAttribute="top" secondItem="TeX-lr-MTW" secondAttribute="bottom" constant="8" id="H3G-DZ-gCt"/>
+                    <constraint firstItem="Shb-JW-mbj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="K9Q-A4-yH0"/>
+                    <constraint firstItem="TeX-lr-MTW" firstAttribute="leading" secondItem="Shb-JW-mbj" secondAttribute="leading" id="aEW-ty-kvR"/>
+                    <constraint firstItem="iXZ-hA-3AA" firstAttribute="leading" secondItem="Shb-JW-mbj" secondAttribute="trailing" constant="8" id="eBR-vo-BpV"/>
+                    <constraint firstItem="jvt-GI-TNu" firstAttribute="leading" secondItem="TeX-lr-MTW" secondAttribute="leading" id="ksK-yi-SQX"/>
+                    <constraint firstItem="TeX-lr-MTW" firstAttribute="top" secondItem="iXZ-hA-3AA" secondAttribute="bottom" constant="8" id="pLv-xN-v0M"/>
+                    <constraint firstAttribute="trailing" secondItem="iXZ-hA-3AA" secondAttribute="trailing" constant="10" id="rRH-Y3-USz"/>
+                    <constraint firstAttribute="trailing" secondItem="TeX-lr-MTW" secondAttribute="trailing" constant="10" id="s6v-8l-Bdg"/>
+                    <constraint firstItem="Shb-JW-mbj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="voh-Rs-Qeh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="btn1" destination="iXZ-hA-3AA" id="lat-ef-hDz"/>
+                <outlet property="contentImageView" destination="jvt-GI-TNu" id="t0P-Ts-8Cd"/>
+                <outlet property="headerImageBtn" destination="Shb-JW-mbj" id="ZMB-5s-4Fd"/>
+                <outlet property="textContentLabel" destination="TeX-lr-MTW" id="mJw-bI-0BK"/>
+            </connections>
+            <point key="canvasLocation" x="264" y="266"/>
+        </tableViewCell>
+    </objects>
+</document>
