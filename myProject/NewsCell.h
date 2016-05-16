@@ -14,7 +14,15 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
 @property (weak, nonatomic) IBOutlet UILabel *textContentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView;
+@property (weak, nonatomic) IBOutlet UILabel *gameTitleLabel;
+/**
+ *  数据源
+ */
+@property (strong, nonatomic) FeedFeeds* feed;
+@property (strong, nonatomic) GameDetailBaseClass* gameModel;
 
+
+@property (weak, nonatomic) IBOutlet UILabel *gameSubTitleLabel;
 
 
 
@@ -24,5 +32,5 @@
 
 
 
--(void)setDataSource:(FeedFeeds *)feed GameModel:(GameDetailBaseClass*)gameModel;
+-(void)setDataSource;
 @end

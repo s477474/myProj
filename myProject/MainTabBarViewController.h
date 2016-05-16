@@ -13,5 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *customNavBar;
 @property(strong,nonatomic)DDMenuController* menuController;
+- (IBAction)UserInfoClick:(id)sender;
+
 +(id)getMainTabBar;
 @end

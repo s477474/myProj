@@ -88,6 +88,9 @@
                                         <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="17"/>
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                     </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="UserInfoClick:" destination="PPl-Wo-OdL" eventType="touchUpInside" id="aOD-UU-GIk"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" red="0.93942622490000005" green="0.94195864900000004" blue="0.46180610030000002" alpha="1" colorSpace="calibratedRGB"/>

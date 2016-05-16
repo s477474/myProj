@@ -16,6 +16,10 @@ static MainTabBarViewController *mainTabBar;
 @implementation MainTabBarViewController
 
 
+- (IBAction)UserInfoClick:(id)sender {
+    [self.menuController showLeftController:YES];
+}
+
 +(id)getMainTabBar
 {
     if (mainTabBar==nil) {

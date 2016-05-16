@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -24,47 +25,76 @@
                             <action selector="viewGameInfo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="chB-vR-piY"/>
                         </connections>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQR-Rb-Rhg">
+                        <rect key="frame" x="63" y="10" width="188" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbU-H7-Sfe">
+                        <rect key="frame" x="63" y="34" width="188" height="24"/>
+                        <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iXZ-hA-3AA">
                         <rect key="frame" x="63" y="10" width="247" height="47"/>
-                        <state key="normal" title="Button"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <connections>
                             <action selector="viewGameInfo:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ao1-2j-ZGl"/>
                         </connections>
                     </button>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jvt-GI-TNu">
-                        <rect key="frame" x="8" y="175" width="240" height="130"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jvt-GI-TNu">
+                        <rect key="frame" x="8" y="173" width="240" height="130"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="130" id="4fe-U8-lSX"/>
                             <constraint firstAttribute="width" constant="240" id="YNd-Oz-nFb"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TeX-lr-MTW">
-                        <rect key="frame" x="8" y="65" width="302" height="102"/>
+                        <rect key="frame" x="8" y="65" width="302" height="100"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="102" id="y0b-Hu-aUN"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" red="0.73230991239999998" green="0.75026597750000001" blue="0.80413417259999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="y0b-Hu-aUN"/>
+                            </mask>
+                        </variation>
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="LbU-H7-Sfe" firstAttribute="top" secondItem="bQR-Rb-Rhg" secondAttribute="bottom" id="464-1X-5bt"/>
                     <constraint firstItem="iXZ-hA-3AA" firstAttribute="top" secondItem="Shb-JW-mbj" secondAttribute="top" id="5m6-3V-eJt"/>
                     <constraint firstItem="iXZ-hA-3AA" firstAttribute="height" secondItem="Shb-JW-mbj" secondAttribute="height" id="DEf-ad-cJr"/>
+                    <constraint firstItem="bQR-Rb-Rhg" firstAttribute="height" secondItem="Shb-JW-mbj" secondAttribute="height" multiplier="0.5" id="E5k-sp-bg2"/>
+                    <constraint firstItem="LbU-H7-Sfe" firstAttribute="height" secondItem="bQR-Rb-Rhg" secondAttribute="height" id="Fe9-LA-pGB"/>
                     <constraint firstItem="jvt-GI-TNu" firstAttribute="top" secondItem="TeX-lr-MTW" secondAttribute="bottom" constant="8" id="H3G-DZ-gCt"/>
+                    <constraint firstAttribute="bottom" secondItem="jvt-GI-TNu" secondAttribute="bottom" constant="8" id="IWE-AF-J2C"/>
                     <constraint firstItem="Shb-JW-mbj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="K9Q-A4-yH0"/>
+                    <constraint firstItem="bQR-Rb-Rhg" firstAttribute="width" secondItem="Shb-JW-mbj" secondAttribute="width" multiplier="4" id="KGV-SS-6TK"/>
+                    <constraint firstItem="bQR-Rb-Rhg" firstAttribute="leading" secondItem="Shb-JW-mbj" secondAttribute="trailing" constant="8" id="NSy-vW-rtR"/>
+                    <constraint firstItem="LbU-H7-Sfe" firstAttribute="leading" secondItem="bQR-Rb-Rhg" secondAttribute="leading" id="UyY-dw-XPP"/>
                     <constraint firstItem="TeX-lr-MTW" firstAttribute="leading" secondItem="Shb-JW-mbj" secondAttribute="leading" id="aEW-ty-kvR"/>
                     <constraint firstItem="iXZ-hA-3AA" firstAttribute="leading" secondItem="Shb-JW-mbj" secondAttribute="trailing" constant="8" id="eBR-vo-BpV"/>
                     <constraint firstItem="jvt-GI-TNu" firstAttribute="leading" secondItem="TeX-lr-MTW" secondAttribute="leading" id="ksK-yi-SQX"/>
+                    <constraint firstItem="jvt-GI-TNu" firstAttribute="top" secondItem="TeX-lr-MTW" secondAttribute="bottom" constant="8" id="lXa-Go-a2N"/>
+                    <constraint firstItem="bQR-Rb-Rhg" firstAttribute="top" secondItem="Shb-JW-mbj" secondAttribute="top" id="nrP-ib-biW"/>
                     <constraint firstItem="TeX-lr-MTW" firstAttribute="top" secondItem="iXZ-hA-3AA" secondAttribute="bottom" constant="8" id="pLv-xN-v0M"/>
                     <constraint firstAttribute="trailing" secondItem="iXZ-hA-3AA" secondAttribute="trailing" constant="10" id="rRH-Y3-USz"/>
                     <constraint firstAttribute="trailing" secondItem="TeX-lr-MTW" secondAttribute="trailing" constant="10" id="s6v-8l-Bdg"/>
+                    <constraint firstItem="LbU-H7-Sfe" firstAttribute="width" secondItem="bQR-Rb-Rhg" secondAttribute="width" id="siO-uc-Rkm"/>
                     <constraint firstItem="Shb-JW-mbj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="voh-Rs-Qeh"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="btn1" destination="iXZ-hA-3AA" id="lat-ef-hDz"/>
                 <outlet property="contentImageView" destination="jvt-GI-TNu" id="t0P-Ts-8Cd"/>
+                <outlet property="gameSubTitleLabel" destination="LbU-H7-Sfe" id="Q9s-0B-oLl"/>
+                <outlet property="gameTitleLabel" destination="bQR-Rb-Rhg" id="AyB-u3-ZYd"/>
                 <outlet property="headerImageBtn" destination="Shb-JW-mbj" id="ZMB-5s-4Fd"/>
                 <outlet property="textContentLabel" destination="TeX-lr-MTW" id="mJw-bI-0BK"/>
             </connections>

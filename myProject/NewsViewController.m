@@ -20,6 +20,14 @@
     self.gameModelArray=[NSMutableArray arrayWithCapacity:0];
 }
 
+
+-(void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+//    [self.dataSource removeAllObjects];
+//    [self.gameModelArray removeAllObjects];
+}
+
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -74,8 +82,9 @@
                             }]];
                             
                             //所有数据请求完毕,设置tableView数据源
-                            [self reloadTableView];
-    
+                            if (self.gameModelArray.count>=20) {
+                                 [self reloadTableView];
+                            }
                         }
                     }
                 }];
@@ -122,7 +131,7 @@
 
 -(void)configTableView
 {
-    self.tableView1=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
+    self.tableView1=[[UITableView alloc]initWithFrame:CGRectMake(0, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-self.tabBarController.tabBar.bounds.size.height) style:UITableViewStylePlain];
 
     _tableView1.separatorStyle=UITableViewCellSeparatorStyleNone;
     _tableView1.tag=201;
@@ -131,7 +140,7 @@
     [self.scrollView addSubview:_tableView1];
     
     
-    self.tableView2=[[UITableView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, 64, SCREEN_WIDTH, SCREEN_HEIGHT) style:UITableViewStylePlain];
+    self.tableView2=[[UITableView alloc]initWithFrame:CGRectMake(SCREEN_WIDTH, 64, SCREEN_WIDTH, SCREEN_HEIGHT-64-self.tabBarController.tabBar.bounds.size.height) style:UITableViewStylePlain];
 
     _tableView2.separatorStyle=UITableViewCellSeparatorStyleNone;
     _tableView2.tag=202;
@@ -175,7 +184,12 @@
 #pragma mark - 设置行高
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 312;
+    FeedFeeds *feed=[self.dataSource objectAtIndex:indexPath.row];
+    float contentHeight=[feed getContentHeight];
+    float totalHeight=10+47+8+contentHeight+8+130+8;
+    NSLog(@"%f",totalHeight);
+
+    return totalHeight;
 }
 
 
@@ -193,7 +207,9 @@
     [cell.headerImageBtn setBackgroundImage:nil forState:UIControlStateNormal];
     
 //    设置cell数据源
-    [cell setDataSource:feed GameModel:gameModel];
+    cell.feed=feed;
+    cell.gameModel=gameModel;
+    [cell setDataSource];
     return cell;
 }
 

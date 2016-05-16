@@ -42,7 +42,7 @@ static HttpRequestBox *requestBox=nil;
 #pragma mark - 根据game_platid获取游戏细节信息
 -(void)gameRequestWithGamePlatId:(int)gamePlatId CallBack:(void(^)(GameDetailBaseClass * gameModel,bool isSuccess))callBack;
 {
-    
+
     NSString *urlString=[NSString stringWithFormat:@"http://api.diershoubing.com:5000/game/game_plat/detail/%d/?src=ios&version=310",gamePlatId];
     
     __block GameDetailBaseClass *gameModel=nil;
