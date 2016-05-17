@@ -45,11 +45,8 @@
             self.dataSource=[NSMutableArray arrayWithArray:[feedsArray sortedArrayUsingComparator:^NSComparisonResult(id  obj1, id  obj2) {
                 return  [obj1 feedId]<[obj2 feedId];
             }]];
-          
-            
              ///发送请求的数量
             __block int requestCount=0;
-            
             //            计算feeds中带游戏资料的数量
             __block int k=0;
             for (id feed in feedsArray) {
@@ -62,31 +59,25 @@
                 if (feed.gamePlatId==0) {
                     GameDetailBaseClass *game=[GameDetailBaseClass new];
                     game.ret=feed.feedId;
+                    @synchronized(self) {
+                        requestCount++;
+                    }
                     [array addObject:game];
                     continue;
                 }
-                
-                //                请求游戏model (需要用到game_logo)
-                [[HttpRequestBox getRequestBox]gameRequestWithGamePlatId:(int)feed.gamePlatId CallBack:^(GameDetailBaseClass *gameModel, bool isSuccess) {
+//                           请求游戏model (需要用到game_logo)
+                [[HttpRequestBox getRequestBox]gameRequestWithGamePlatId:feed.gamePlatId CallBack:^(GameDetailBaseClass *gameModel, bool isSuccess) {
                     gameModel.ret=feed.feedId;
-                    
-                    if (isSuccess) {
-                        @synchronized(self) {
-                            requestCount++;
-                        }
                         [array addObject:gameModel];
-                        
                         if (requestCount>=k) {
                             self.gameModelArray=[NSMutableArray arrayWithArray:[array sortedArrayUsingComparator:^NSComparisonResult(GameDetailBaseClass * obj1, GameDetailBaseClass * obj2) {
                                 return obj1.ret<obj2.ret;
                             }]];
-                            
                             //所有数据请求完毕,设置tableView数据源
                             if (self.gameModelArray.count>=20) {
                                  [self reloadTableView];
                             }
                         }
-                    }
                 }];
             }
         }

@@ -15,4 +15,6 @@
 @property (strong, nonatomic) UITableView* tableView2;
 @property (strong, nonatomic) NSMutableArray<FeedFeeds*> *dataSource;
 @property (strong, nonatomic) NSMutableArray<GameDetailBaseClass*> *gameModelArray;
+@property (strong, nonatomic) NSMutableArray<FeedFeeds*> *dataSource1;
+@property (strong, nonatomic) NSMutableArray<GameDetailBaseClass*> *gameModelArray1;
 @end
