@@ -1,2 +1,7 @@
 
-*.xcuserstate
+
+
+.svn/entries
+/.svn
+/myProject.xcworkspace/xcuserdata/Exception.xcuserdatad
+myProject.xcworkspace/xcuserdata/Exception.xcuserdatad/UserInterfaceState.xcuserstate

@@ -14,8 +14,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
 @property (weak, nonatomic) IBOutlet UILabel *textContentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView;
-@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *contentImageViews;
 @property (weak, nonatomic) IBOutlet UILabel *gameTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *gameSubTitleLabel;
+- (IBAction)viewGameInfo:(UIButton *)sender;
 /**
  *  数据源
  */
@@ -23,11 +24,6 @@
 @property (strong, nonatomic) GameDetailBaseClass* gameModel;
 
 
-@property (weak, nonatomic) IBOutlet UILabel *gameSubTitleLabel;
-
-
-
-- (IBAction)viewGameInfo:(UIButton *)sender;
 
 
 

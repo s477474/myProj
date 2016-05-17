@@ -225,6 +225,8 @@
     
 //    清空cell内容.防止重叠
     cell.textContentLabel.text=nil;
+    cell.gameSubTitleLabel.text=nil;
+    cell.gameTitleLabel.text=nil;
     [cell.contentImageView setImage:nil];
     [cell.headerImageBtn setBackgroundImage:nil forState:UIControlStateNormal];
     
