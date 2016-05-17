@@ -18,33 +18,45 @@
 -(void)setTableViewDataSource
 {
     self.gameModelArray=[NSMutableArray arrayWithCapacity:0];
+    self.gameModelArray1=[NSMutableArray arrayWithCapacity:0];
 }
 
 
 -(void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-//    [self.dataSource removeAllObjects];
-//    [self.gameModelArray removeAllObjects];
+
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
 //    请求数据源
-    [self getDataSource];
+
+        // something
+        [self getDataSourceWithClassId:1 Pn:0];
+        [self getDataSourceWithClassId:2 Pn:0];
+
 }
 
 
 
--(void)getDataSource
+-(void)getDataSourceWithClassId:(int)classId Pn:(int)pn
 {
     __block NSMutableArray *array=[NSMutableArray arrayWithCapacity:0];
-    [[HttpRequestBox getRequestBox]feedRequestWithClass:1 Pn:0 CallBack:^(NSMutableArray *feedsArray, bool isSuccess) {
+    [[HttpRequestBox getRequestBox]feedRequestWithClass:classId Pn:pn CallBack:^(NSMutableArray *feedsArray, bool isSuccess) {
         if (isSuccess) {
-            self.dataSource=[NSMutableArray arrayWithArray:[feedsArray sortedArrayUsingComparator:^NSComparisonResult(id  obj1, id  obj2) {
-                return  [obj1 feedId]<[obj2 feedId];
-            }]];
+            if (classId==1) {
+                self.dataSource=[NSMutableArray arrayWithArray:[feedsArray sortedArrayUsingComparator:^NSComparisonResult(id  obj1, id  obj2) {
+                    return  [obj1 feedId]<[obj2 feedId];
+                }]];
+            }else{
+                self.dataSource1=[NSMutableArray arrayWithArray:[feedsArray sortedArrayUsingComparator:^NSComparisonResult(id  obj1, id  obj2) {
+                    return  [obj1 feedId]<[obj2 feedId];
+                    }]];
+            }
+            
+            
              ///发送请求的数量
             __block int requestCount=0;
             //            计算feeds中带游戏资料的数量
@@ -55,7 +67,7 @@
                 }
             }
             //            遍历找出所有需要游戏logo的对象 没有的直接new一个填充
-            for (FeedFeeds *feed in self.dataSource) {
+            for (FeedFeeds *feed in (classId==1?self.dataSource:self.dataSource1)) {
                 if (feed.gamePlatId==0) {
                     GameDetailBaseClass *game=[GameDetailBaseClass new];
                     game.ret=feed.feedId;
@@ -70,12 +82,24 @@
                     gameModel.ret=feed.feedId;
                         [array addObject:gameModel];
                         if (requestCount>=k) {
-                            self.gameModelArray=[NSMutableArray arrayWithArray:[array sortedArrayUsingComparator:^NSComparisonResult(GameDetailBaseClass * obj1, GameDetailBaseClass * obj2) {
-                                return obj1.ret<obj2.ret;
-                            }]];
+                            
+                            
+                            if (classId==1) {
+                                self.gameModelArray=[NSMutableArray arrayWithArray:[array sortedArrayUsingComparator:^NSComparisonResult(GameDetailBaseClass * obj1, GameDetailBaseClass * obj2) {
+                                    return obj1.ret<obj2.ret;
+                                }]];
+                            }else if(classId==2){
+                                self.gameModelArray1=[NSMutableArray arrayWithArray:[array sortedArrayUsingComparator:^NSComparisonResult(GameDetailBaseClass * obj1, GameDetailBaseClass * obj2) {
+                                    return obj1.ret<obj2.ret;
+                                }]];
+                            }
                             //所有数据请求完毕,设置tableView数据源
+                            NSLog(@"%d",self.gameModelArray1.count);
                             if (self.gameModelArray.count>=20) {
-                                 [self reloadTableView];
+                                 [self reloadTableView:_tableView1];
+                            }else if (self.gameModelArray1.count>=20){
+                                
+                                [self reloadTableView:_tableView2];
                             }
                         }
                 }];
@@ -85,13 +109,14 @@
 }
 
 #pragma mark - 刷新表
--(void)reloadTableView
+-(void)reloadTableView:(UITableView*)tableView
 {
-    _tableView1.delegate=self;
-    _tableView1.dataSource=self;
-    _tableView2.delegate=self;
-    _tableView2.dataSource=self;
-    [_tableView1 reloadData];
+    NSLog(@"%d",tableView.tag);
+
+    tableView.delegate=self;
+    tableView.dataSource=self;
+    [tableView reloadData];
+
 }
 
 - (void)viewDidLoad {
@@ -154,8 +179,9 @@
     
 //  设置滑动条滑动的回调方法
     [sliderBar slideBarItemSelectedCallback:^(NSUInteger idx) {
+        NSLog(@"%d",idx);
 
-        
+        self.scrollView.contentOffset=CGPointMake(SCREEN_WIDTH*idx, 0);
     }];
 //    添加到自定义导航栏上
     [[[MainTabBarViewController getMainTabBar]customNavBar] addSubview:sliderBar];
@@ -175,10 +201,9 @@
 #pragma mark - 设置行高
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    FeedFeeds *feed=[self.dataSource objectAtIndex:indexPath.row];
+    FeedFeeds *feed=tableView.tag==1?[self.dataSource objectAtIndex:indexPath.row]:[self.dataSource1 objectAtIndex:indexPath.row];
     float contentHeight=[feed getContentHeight];
     float totalHeight=10+47+8+contentHeight+8+130+8;
-    NSLog(@"%f",totalHeight);
 
     return totalHeight;
 }
@@ -189,8 +214,14 @@
 {
     NewsCell *cell=[tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     
-    FeedFeeds *feed=[self.dataSource objectAtIndex:indexPath.row];
-    GameDetailBaseClass *gameModel=[self.gameModelArray objectAtIndex:indexPath.row];
+    
+    FeedFeeds *feed=tableView.tag==201?[self.dataSource objectAtIndex:indexPath.row]:[self.dataSource1 objectAtIndex:indexPath.row];
+    GameDetailBaseClass *gameModel=nil;
+    if (tableView.tag==201) {
+        gameModel=[self.gameModelArray objectAtIndex:indexPath.row];
+    }else{
+        gameModel=[self.gameModelArray1 objectAtIndex:indexPath.row];
+    }
     
 //    清空cell内容.防止重叠
     cell.textContentLabel.text=nil;

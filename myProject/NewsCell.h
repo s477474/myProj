@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btn1;
 @property (weak, nonatomic) IBOutlet UILabel *textContentLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *contentImageView;
+@property (strong, nonatomic) IBOutletCollection(UIImageView) NSArray *contentImageViews;
 @property (weak, nonatomic) IBOutlet UILabel *gameTitleLabel;
 /**
  *  数据源

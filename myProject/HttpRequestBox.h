@@ -12,6 +12,7 @@
 #import "GameDetailDataModels.h"
 @interface HttpRequestBox : NSObject
 
+@property (strong, nonatomic) NSDateFormatter *formatter;
 @property (strong, nonatomic) AFHTTPSessionManager* sessionManger;
 +(id)getRequestBox;
 

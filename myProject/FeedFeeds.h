@@ -28,7 +28,7 @@
 @property (nonatomic, strong) NSString *gameName;
 @property (nonatomic, assign) int gamePlatId;
 @property (nonatomic, assign) int collectStatus;
-@property (nonatomic, assign) id videoImg;
+@property (nonatomic, copy) NSString* videoImg;
 @property (nonatomic, assign) int collectn;
 @property (nonatomic, assign) id nhurl;
 @property (nonatomic, assign) int feedId;

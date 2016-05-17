@@ -75,7 +75,7 @@ NSString *const kFeedFeedsAcontent = @"acontent";
 -(CGFloat)getContentHeight;
 {
         float contentWidth=SCREEN_WIDTH;
-        float contentHeight=[_content boundingRectWithSize:CGSizeMake(contentWidth, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size.height+20;
+        float contentHeight=[_content boundingRectWithSize:CGSizeMake(contentWidth-40, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size.height+20;
     return contentHeight;
 }
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict

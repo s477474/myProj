@@ -15,6 +15,7 @@ static HttpRequestBox *requestBox=nil;
     if (requestBox==nil) {
         requestBox=[[HttpRequestBox alloc]init];
         requestBox.sessionManger=[AFHTTPSessionManager manager];
+        requestBox.formatter=[[NSDateFormatter alloc]init];
     }
     return requestBox;
 }
