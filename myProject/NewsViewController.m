@@ -203,6 +203,10 @@
 {
     FeedFeeds *feed=tableView.tag==1?[self.dataSource objectAtIndex:indexPath.row]:[self.dataSource1 objectAtIndex:indexPath.row];
     float contentHeight=[feed getContentHeight];
+    
+    if ([feed.feedType isEqualToString:@"资讯"]) {
+        return 10+47+8+contentHeight+8;
+    }
     float totalHeight=10+47+8+contentHeight+8+130+8;
 
     return totalHeight;
